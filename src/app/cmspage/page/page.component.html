@@ -1,0 +1,14 @@
+
+<section class="cmspage mtb-40">
+  <div class="container" *ngIf="About | async as About else loading"> 
+    <h1>{{About.Title}}</h1>
+    <div class="page-desc">
+      <p innerHtml="{{About.Description}}"></p>
+    </div>
+  </div>
+  <ng-template #loading>
+      <div class="service-error">
+          <h3>Error loading of the {{About.Title}}. Please try again later.</h3>
+      </div>
+  </ng-template>
+</section>

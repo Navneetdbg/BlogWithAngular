@@ -1,0 +1,73 @@
+<div class="dash-header">
+  <div class="dash-title">
+      <!-- <h1>{{title}}</h1> -->
+  </div>
+  <table class="table table-bordered table-striped">
+    <tr>
+        <th>#ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Action</th>
+    </tr>
+  <tr *ngFor = "let b of AllCategories | async">
+    <td>{{b.Id}}</td>
+    <td>{{b.Name}}</td>
+    <td>{{b.Email}}</td>
+<td>{{b.Message}}</td>
+    <td class="action">
+        <button (click)="loadPageToEdit(b.Id)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Reply</button>
+        <button (click)="loadPageToDelete(b.Id)" type="button" class="btn btn-danger btn-sm">Delete</button>
+    </td>
+  </tr>
+  </table>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Reply</h4>
+          
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+          
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup]="PageForm" (ngSubmit)="onFormSubmit(PageForm.value)">
+              <div class="form-group">
+                  <input type="text" readonly formControlName="Name" class="form-control" placeholder="Name">
+                  <!-- <span *ngIf="!BlogForm.get('title').valid && BlogForm.get('title').touched">Title is Required</span>
+             -->
+                </div>
+            <div class="form-group">
+                <input type="text" readonly formControlName="Email" class="form-control" placeholder="Email">
+                <!-- <span *ngIf="!BlogForm.get('title').valid && BlogForm.get('title').touched">Title is Required</span>
+           -->
+              </div>
+              <div class="form-group">
+              <textarea type="text" readonly rows="3" formControlName="Message" class="form-control" placeholder="Message"></textarea>
+                <!-- <span *ngIf="!BlogForm.get('title').valid && BlogForm.get('title').touched">Title is Required</span>
+           -->
+              </div>
+              <div class="form-group">
+                <textarea type="text" rows="5" formControlName="Reply" class="form-control" placeholder="Reply"></textarea>
+                  <!-- <span *ngIf="!BlogForm.get('title').valid && BlogForm.get('title').touched">Title is Required</span>
+             -->
+                </div>
+              <div class="form-group">
+                <button class="btn btn-success"  >Submit</button>
+              </div>
+          </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

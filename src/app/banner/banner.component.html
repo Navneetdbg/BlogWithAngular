@@ -1,0 +1,13 @@
+
+<section class="banner">
+  <div class="banner-box">
+    <div class="intro-text">
+      <div class="intro-text-box" *ngFor= "let banner of allBanner | async">
+        <h1>{{banner.Title1}}</h1>
+        <p>{{banner.Title2}}</p>
+      </div>
+    </div>
+    <!-- <img src="http://localhost:52356/Images/{{banner.Image}}"  alt="banner" > -->
+    <img src="assets/images/1140x500-3.jpg">
+  </div>
+</section>
